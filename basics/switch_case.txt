@@ -1,0 +1,81 @@
+package main
+
+func main() {
+
+	// Switch Statement in go is (switch case default) (fallthrough - check next case even if the condition is true)
+	// switch expression {
+	// case value1:
+	// 	// Code to execute if expression equals value1
+	// case value2:
+	// 	// Code to execute if expression equals value2
+	// default:
+	// 	// Code to execute if expression doesn't match any case
+	// }
+
+	fruit := "apple"
+
+	switch fruit {
+	case "apple":
+		println("This is an apple.")
+	case "banana":
+		println("This is a banana.")
+	case "orange":
+		println("This is an orange.")
+	default:
+		println("Unknown fruit.")
+	}
+
+	// Multiple Conditions
+	day := "Monday"
+
+	switch day {
+	case "Monday", "Tuesday", "Wednesday", "Thursday", "Friday": // check multiple conditions
+		println("It's a weekday.")
+	case "Saturday", "Sunday":
+		println("It's the weekend!")
+	default:
+		println("Not a valid day.")
+	}
+
+	number := 15
+
+	switch {
+	case number < 10:
+		println("The number is less than 10.")
+	case number >= 10 && number < 20:
+		println("The number is between 10 and 19.")
+	default:
+		println("The number is 20 or greater.")
+	}
+
+	// Fallthrough Example
+	num := 2
+
+	switch {
+	case num > 1:
+		println("Number is greater than 1.")
+		fallthrough // both case 1 and case 2 will be executed
+	case num == 2:
+		println("Number is 2.")
+	default:
+		println("Not Two")
+	}
+
+	checkType(10)
+	checkType(3.14)
+	checkType("Hello")
+	checkType(true)
+}
+
+func checkType(x interface{}) {
+	switch x.(type) { // Type Switch
+	case int:
+		println("x is an integer.")
+	case float64:
+		println("x is a float.")
+	case string:
+		println("x is a string.")
+	default:
+		println("Unknown type.")
+	}
+}
