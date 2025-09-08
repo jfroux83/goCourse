@@ -1,0 +1,85 @@
+package main
+
+import (
+	"fmt"
+	"maps"
+)
+
+func main() {
+
+	// var mapVariable map[keyType]valueType
+
+	// mapVariable make(map[keyType]valueType)
+
+	// using a Map Literal
+	// mapVariable = map[keyType]valueType{
+	// 	key1: value1,
+	// 	key2: value2,
+	// }
+
+	myMap := make(map[string]int)
+	fmt.Println(myMap)
+
+	myMap["key1"] = 9
+	myMap["code"] = 18
+	fmt.Println(myMap)
+	fmt.Println(myMap["key1"])
+
+	// Non-existing key
+	fmt.Println(myMap["nonExistingKey"]) // zero value of the value type (int = 0) (string = "")
+
+	// modifying a value
+	myMap["code"] = 21
+	fmt.Println(myMap)
+
+	// deleting a key-value pair
+	// delete(myMap, "key1")
+
+	// clearing a map
+	// clear(myMap)
+
+	value, ok := myMap["key1"]
+	fmt.Println(value, ok) // 9 true - checks if value is associated with the key
+
+	myMap2 := map[string]int{
+		"a": 1,
+		"b": 2,
+	}
+	fmt.Println(myMap2)
+
+	if maps.Equal(myMap, myMap2) {
+		fmt.Println("Maps are equal")
+	}
+
+	// iterating over a map
+	for key, value := range myMap2 {
+		fmt.Println(key, value)
+	}
+
+	// zero value of a map is nil
+	var myMap3 map[string]string
+
+	if myMap3 == nil {
+		fmt.Println("myMap3 is nil")
+	} else {
+		fmt.Println("myMap3 is not nil")
+	}
+
+	val := myMap3["key"]
+	fmt.Println("Value:", val) // blank value of string = ""
+
+	// myMap3["key"] = "Value"
+	// fmt.Println(myMap3)
+
+	myMap3 = make(map[string]string)
+	myMap3["key"] = "Value"
+	fmt.Println(myMap3)
+
+	// Length of a map
+	fmt.Println("Length of myMap3:", len(myMap3)) // number of key-value pairs in the map
+
+	// Nested Maps
+	myMap4 := make(map[string]map[string]string)
+	myMap4["map1"] = myMap3
+	fmt.Println(myMap4)
+}
