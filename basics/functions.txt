@@ -1,0 +1,65 @@
+package main
+
+import "fmt"
+
+func main() {
+
+	// func <name> (parameters list) (return types) {
+	// function body
+	// return <value>
+	// }
+
+	// public function uppercase first letter
+	// private function lowercase first letter
+
+	// parameters are optional
+	// paramenters name and type
+	// multiple parameters with same type can be grouped
+	// multiple return types are possible
+
+	sum := add(1, 2)
+	fmt.Println(sum)
+
+	// anonymous function
+	greet := func() {
+		fmt.Println("Anonymous function")
+	}
+
+	greet()
+
+	// function as type
+	operation := add
+	result := operation(3, 5)
+	fmt.Println(result)
+
+	// first class citizens / objects
+	// can be passed as arguments
+	// can be returned from other functions
+	// can be assigned to variables
+	// can be stored in data structures
+
+	// passing function as argument
+	result2 := applyOperation(5, 3, add)
+	fmt.Println(result2)
+
+	// returning function and using a function
+	multiplyBy2 := createMultiplier(2)
+	fmt.Println(multiplyBy2(6))
+
+}
+
+func add(a, b int) int {
+	return a + b
+}
+
+// function that takes another function as an argument
+func applyOperation(x int, y int, operation func(int, int) int) int {
+	return operation(x, y)
+}
+
+// function that returns a function
+func createMultiplier(factor int) func(int) int {
+	return func(x int) int {
+		return x * factor
+	}
+}
